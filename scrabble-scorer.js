@@ -57,12 +57,15 @@ let simpleScorer = function(word){
 let vowelBonusScorer = function (word){
    word = word.toUpperCase();
    let letterPoints = "";
-   for (let i = 0; i < word.length; i++){
-      if (word //contains a, e, i, o, or u*/)
+   let vowels = ["a", "e", "i", "o", "u"]
+   for (let i = 0; i < word.length; i++) {
+      if (vowels.indexOf(word[i]) !== -1) {
       letterPoints += 3;
    } else {
       letterPoints += 1;
+      letterPoints = vowelBonusScore;
    }
+   return vowelBonusScore;
 };
 
 let scrabbleScorer;
