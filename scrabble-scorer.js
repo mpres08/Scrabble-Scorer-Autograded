@@ -2,6 +2,8 @@
 
 const input = require("readline-sync");
 
+let enteredWord = " ";
+
 const oldPointStructure = {
   1: ['A', 'E', 'I', 'O', 'U', 'L', 'N', 'R', 'S', 'T'],
   2: ['D', 'G'],
@@ -32,9 +34,13 @@ function oldScrabbleScorer(word) {
 // your job is to finish writing these functions and variables that we've named //
 // don't change the names or your program won't work as expected. //
 
-function initialPrompt() {
-   console.log("Let's play some scrabble! Enter a word:");
+function initialPrompt(enteredWord) {
+   console.log("Let's play some scrabble!")
+   enteredWord = input.question("Enter a word: ")
+   let score = oldScrabbleScorer(enteredWord)
+   return score;
 };
+console.log(initialPrompt());
 
 let newPointStructure;
 
