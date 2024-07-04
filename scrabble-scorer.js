@@ -44,9 +44,26 @@ console.log(initialPrompt());
 
 let newPointStructure;
 
-let simpleScorer;
+let simpleScorer = function(word){
+   word = word.toUpperCase();
+   let letterPoints = "";
+   for (let i = 0; i < word.length; i++) {
+      letterPoints += 1;
+      letterPoints = simpleScore
+   }
+   return simpleScore
+};
 
-let vowelBonusScorer;
+let vowelBonusScorer = function (word){
+   word = word.toUpperCase();
+   let letterPoints = "";
+   for (let i = 0; i < word.length; i++){
+      if (word //contains a, e, i, o, or u*/)
+      letterPoints += 3;
+   } else {
+      letterPoints += 1;
+   }
+};
 
 let scrabbleScorer;
 
