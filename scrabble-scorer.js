@@ -46,27 +46,25 @@ let newPointStructure;
 
 let simpleScorer = function(word){
    word = word.toUpperCase();
-   let letterPoints = "";
+   let simpleScore = 0;
    for (let i = 0; i < word.length; i++) {
-      letterPoints += 1;
-      letterPoints = simpleScore
+      simpleScore += 1;
    }
    return simpleScore
 };
 
 let vowelBonusScorer = function (word){
    word = word.toUpperCase();
-   let letterPoints = "";
-   let vowels = ["a", "e", "i", "o", "u"]
+   let vowelBonusScore = 0;
+   let vowels = ["A", "E", "I", "O", "U"]
    for (let i = 0; i < word.length; i++) {
       if (vowels.indexOf(word[i]) !== -1) {
-      letterPoints += 3;
+      vowelBonusScore += 3;
    } else {
-      letterPoints += 1;
-      letterPoints = vowelBonusScore;
+      vowelBonusScore += 1;
    }
-   return vowelBonusScore;
 }
+return vowelBonusScore;
 };
 
 let scrabbleScorer;
@@ -88,7 +86,15 @@ const scoringAlgorithms = [
    }
 ];
 
-function scorerPrompt() {}
+function scorerPrompt() {
+   console.log("Which scoring algorithm would you like to use?");
+   for (i in scoringAlgorithms) {
+      console.log(i + "—" + scoringAlgorithms[i].name + ": " + scoringAlgorithms[i].description);
+   }
+   let pickedAlgorithm = input.question("Enter 0, 1, or 2: ");
+   return pickedAlgorithm;
+}
+scorerPrompt();
 
 function transform() {};
 
