@@ -40,11 +40,10 @@ function initialPrompt(enteredWord) {
    let score = oldScrabbleScorer(enteredWord)
    return score;
 };
-console.log(initialPrompt());
 
 let newPointStructure;
 
-let simpleScorer = function(word){
+let simpleScorer = function(word) {
    word = word.toUpperCase();
    let simpleScore = 0;
    for (let i = 0; i < word.length; i++) {
@@ -53,34 +52,34 @@ let simpleScorer = function(word){
    return simpleScore
 };
 
-let vowelBonusScorer = function (word){
+let vowelBonusScorer = function(word) {
    word = word.toUpperCase();
    let vowelBonusScore = 0;
-   let vowels = ["A", "E", "I", "O", "U"]
+   let vowels = ["A", "E", "I", "O", "U"];
    for (let i = 0; i < word.length; i++) {
       if (vowels.indexOf(word[i]) !== -1) {
       vowelBonusScore += 3;
    } else {
       vowelBonusScore += 1;
    }
-}
-return vowelBonusScore;
+   }
+   return vowelBonusScore;
 };
 
 let scrabbleScorer;
 
 const scoringAlgorithms = [
-   { name: "Simple Score",
+   {name: "Simple Score",
    description: "Each letter is worth 1 point.",
    scoreFunction: "A function with a parameter for user input that returns a score." 
    },
 
-   { name: "Vowel Bonus",
-   descripton: "Vowels are 3 points, consonants are 1 point.",
+   {name: "Vowel Bonus",
+   description: "Vowels are 3 points, consonants are 1 point.",
    scoreFunction: "A function that returns a score based on the number of vowels and consonants." 
    },
 
-   { name: "Scrabble",
+   {name: "Scrabble",
    description: "The traditional scoring algorithm.",
    scoreFunction: "Uses the oldScrabbleScorer() function to determine the score for a given word."
    }
@@ -88,20 +87,20 @@ const scoringAlgorithms = [
 
 function scorerPrompt() {
    console.log("Which scoring algorithm would you like to use?");
-   for (i in scoringAlgorithms) {
+   for (let i in scoringAlgorithms) {
       console.log(i + "—" + scoringAlgorithms[i].name + ": " + scoringAlgorithms[i].description);
    }
    let pickedAlgorithm = input.question("Enter 0, 1, or 2: ");
    return pickedAlgorithm;
 }
-scorerPrompt();
 
 function transform() {};
 
 function runProgram() {
    initialPrompt();
-   
+   scorerPrompt();
 }
+
 
 // Don't write any code below this line //
 // And don't change these or your program will not run as expected //
