@@ -44,21 +44,21 @@ function initialPrompt() {
 
 let newPointStructure;
 
-let simpleScorer = function(enteredWord) {
-   enteredWord = word.toUpperCase();
+let simpleScorer = function(word) {
+   word = word.toUpperCase();
    let simpleScore = 0;
-   for (let i = 0; i < enteredWord.length; i++) {
+   for (let i = 0; i < word.length; i++) {
       simpleScore += 1;
    }
    return simpleScore
 };
 
-let vowelBonusScorer = function(enteredWord) {
-   enteredWord = word.toUpperCase();
+let vowelBonusScorer = function(word) {
+   word = word.toUpperCase();
    let vowelBonusScore = 0;
    let vowels = ["A", "E", "I", "O", "U"];
-   for (let i = 0; i < enteredWord.length; i++) {
-      if (vowels.indexOf(enteredWord[i]) !== -1) {
+   for (let i = 0; i < word.length; i++) {
+      if (vowels.indexOf(word[i]) !== -1) {
       vowelBonusScore += 3;
    } else {
       vowelBonusScore += 1;
@@ -95,11 +95,13 @@ function scorerPrompt() {
    return pickedAlgorithm;
    }
 
-//function transform() {};
+function transform() {};
 
 function runProgram() {
-   initialPrompt();
-   scorerPrompt();
+   let word = initialPrompt();
+   let pickedAlgorithm = scorerPrompt();
+   let score = scoringAlgorithms[pickedAlgorithm].scoreFunction(word);
+   console.log(`Score for '${word}': ${score}`);
 }
 
 
@@ -107,7 +109,7 @@ function runProgram() {
 // And don't change these or your program will not run as expected //
 module.exports = {
    initialPrompt: initialPrompt,
-   //transform: transform,
+   transform: transform,
    oldPointStructure: oldPointStructure,
    simpleScorer: simpleScorer,
    vowelBonusScorer: vowelBonusScorer,
