@@ -2,7 +2,6 @@
 
 const input = require("readline-sync");
 
-let enteredWord = " ";
 
 const oldPointStructure = {
   1: ['A', 'E', 'I', 'O', 'U', 'L', 'N', 'R', 'S', 'T'],
@@ -34,71 +33,74 @@ function oldScrabbleScorer(word) {
 // your job is to finish writing these functions and variables that we've named //
 // don't change the names or your program won't work as expected. //
 
+
 function initialPrompt(enteredWord) {
+   enteredWord = "";
    console.log("Let's play some scrabble!")
    enteredWord = input.question("Enter a word: ")
-   let score = oldScrabbleScorer(enteredWord)
-   return score;
+   score = oldScrabbleScorer(enteredWord);
+   console.log(score);
 };
+
 
 let newPointStructure;
 
-let simpleScorer = function(word) {
-   word = word.toUpperCase();
-   let simpleScore = 0;
-   for (let i = 0; i < word.length; i++) {
-      simpleScore += 1;
-   }
-   return simpleScore
-};
+//let simpleScorer = function(word) {
+   //word = word.toUpperCase();
+   //let simpleScore = 0;
+   //for (let i = 0; i < word.length; i++) {
+      //simpleScore += 1;
+   //}
+   //return simpleScore
+//};
 
-let vowelBonusScorer = function(word) {
-   word = word.toUpperCase();
-   let vowelBonusScore = 0;
-   let vowels = ["A", "E", "I", "O", "U"];
-   for (let i = 0; i < word.length; i++) {
-      if (vowels.indexOf(word[i]) !== -1) {
-      vowelBonusScore += 3;
-   } else {
-      vowelBonusScore += 1;
-   }
-   }
-   return vowelBonusScore;
-};
+//let vowelBonusScorer = function(word) {
+   //word = word.toUpperCase();
+   //let vowelBonusScore = 0;
+   //let vowels = ["A", "E", "I", "O", "U"];
+   //for (let i = 0; i < word.length; i++) {
+      //if (vowels.indexOf(word[i]) !== -1) {
+      //vowelBonusScore += 3;
+   //} else {
+      //vowelBonusScore += 1;
+   //}
+  // }
+  // return vowelBonusScore;
+//};
 
 let scrabbleScorer;
 
-const scoringAlgorithms = [
-   {name: "Simple Score",
-   description: "Each letter is worth 1 point.",
-   scoreFunction: "A function with a parameter for user input that returns a score." 
-   },
+//const scoringAlgorithms = [
+   //{name: "Simple Score",
+   //description: "Each letter is worth 1 point.",
+   //scoreFunction: simpleScorer() 
+   //},
 
-   {name: "Vowel Bonus",
-   description: "Vowels are 3 points, consonants are 1 point.",
-   scoreFunction: "A function that returns a score based on the number of vowels and consonants." 
-   },
+  // {name: "Vowel Bonus",
+   //description: "Vowels are 3 points, consonants are 1 point.",
+   //scoreFunction: vowelBonusScorer() 
+  // },
 
-   {name: "Scrabble",
-   description: "The traditional scoring algorithm.",
-   scoreFunction: "Uses the oldScrabbleScorer() function to determine the score for a given word."
-   }
-];
+  // {name: "Scrabble",
+   //description: "The traditional scoring algorithm.",
+   //scoreFunction: oldScrabbleScorer()
+  // }
+//];
 
-function scorerPrompt() {
-   console.log("Which scoring algorithm would you like to use?");
-   for (let i in scoringAlgorithms) {
-      console.log(i + "—" + scoringAlgorithms[i].name + ": " + scoringAlgorithms[i].description);
-   }
-   let pickedAlgorithm = input.question("Enter 0, 1, or 2: ");
-   return pickedAlgorithm;
-}
+//function scorerPrompt() {
+   //console.log("Which scoring algorithm would you like to use?");
+   //for (let i in scoringAlgorithms) {
+      //console.log(i + "—" + scoringAlgorithms[i].name + ": " + scoringAlgorithms[i].description);
+   //}
+   //let pickedAlgorithm = input.question("Enter 0, 1, or 2: ");
+   //return pickedAlgorithm;
+//}
 
-function transform() {};
+//function transform() {};
 
 function runProgram() {
    initialPrompt();
-   scorerPrompt();
+   //scorerPrompt();
 }
 
 
@@ -106,13 +108,13 @@ function runProgram() {
 // And don't change these or your program will not run as expected //
 module.exports = {
    initialPrompt: initialPrompt,
-   transform: transform,
+   //transform: transform,
    oldPointStructure: oldPointStructure,
-   simpleScorer: simpleScorer,
-   vowelBonusScorer: vowelBonusScorer,
-   scrabbleScorer: scrabbleScorer,
-   scoringAlgorithms: scoringAlgorithms,
-   newPointStructure: newPointStructure,
+   //simpleScorer: simpleScorer,
+   //vowelBonusScorer: vowelBonusScorer,
+   //scrabbleScorer: scrabbleScorer,
+   //scoringAlgorithms: scoringAlgorithms,
+   //newPointStructure: newPointStructure,
 	runProgram: runProgram,
-	scorerPrompt: scorerPrompt
+	//scorerPrompt: scorerPrompt
 };
