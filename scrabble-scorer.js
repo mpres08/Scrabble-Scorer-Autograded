@@ -41,8 +41,22 @@ function initialPrompt() {
    return enteredWord;
 };
 
+function transform(oldObject) {
+   let newPointStructure = {};
+   for (let key in oldObject) {
+      let letters = oldObject[key];
+      let value = key.toString();
+      for (let i in letters) {
+         let letter = letters[i].toLowerCase();
+         newPointStructure[letter] = value;
+      }
+   }
+   return newPointStructure;
+};
 
-let newPointStructure;
+let newPointStructure = transform(oldPointStructure);
+
+console.log(newPointStructure);
 
 let simpleScorer = function(word) {
    word = word.toUpperCase();
@@ -93,9 +107,7 @@ function scorerPrompt() {
    }
    let pickedAlgorithm = input.question("Enter 0, 1, or 2: ");
    return pickedAlgorithm;
-   }
-
-function transform() {};
+};
 
 function runProgram() {
    let word = initialPrompt();
