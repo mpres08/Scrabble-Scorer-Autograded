@@ -42,11 +42,12 @@ function initialPrompt() {
 };
 
 function transform(oldObject) {
-   let newPointStructure = {};
-   for (let key in oldObject) {
-      let letters = oldObject[key];
-      let value = key.toString();
-      for (let i in letters) {
+   let newPointStructure = {}; //initializes the empty object where the transformed data will be stored
+   for (let key in oldObject) { //iterates over each key in oldPointStructure; each key is a number and each value is an array of letters
+      let letters = oldObject[key]; //letters is assigned to the array of letters corresponding to each key, so letters for 1 would be a, e, i, o, u, l, n, r, s, t
+      console.log(typeof letters); //logs type of letters, which is object
+      let value = key; //assigns current keys to value in newPointStructure
+      for (let i = 0; i < letters.length; i++) {
          let letter = letters[i].toLowerCase();
          newPointStructure[letter] = value;
       }
