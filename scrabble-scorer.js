@@ -34,10 +34,17 @@ function oldScrabbleScorer(word) {
 // don't change the names or your program won't work as expected. //
 
 function initialPrompt() {
-   console.log("Let's play some scrabble!")
-   let enteredWord = input.question("Enter a word: ")
-   let oldScoreStructure = oldScrabbleScorer(enteredWord);
-   console.log(oldScoreStructure);
+   console.log("Let's play some scrabble! Enter 'QUIT' when you're done");
+   while (true) {
+   let enteredWord = input.question("Enter a word: ");
+   if (phrase.toUpperCase() === "QUIT") {
+      console.log("\nThanks for playing! Goodbye. \n");
+      break;
+   } else {
+      let oldScoreStructure = oldScrabbleScorer(enteredWord);
+      console.log(oldScoreStructure);
+   }
+   }
    return enteredWord;
 };
 
@@ -90,17 +97,17 @@ let scrabbleScorer = function(word) {
 };
 
 const scoringAlgorithms = [
-   {name: "Simple Score",
+   { name: "Simple Score",
    description: "Each letter is worth 1 point.",
    scoreFunction: simpleScorer
    },
 
-   {name: "Vowel Bonus",
+   { name: "Vowel Bonus",
    description: "Vowels are 3 points, consonants are 1 point.",
    scoreFunction: vowelBonusScorer 
    },
 
-   {name: "Scrabble",
+   { name: "Scrabble",
    description: "The traditional scoring algorithm.",
    scoreFunction: scrabbleScorer
    }
