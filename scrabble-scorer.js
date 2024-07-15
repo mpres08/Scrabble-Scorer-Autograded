@@ -80,14 +80,11 @@ let vowelBonusScorer = function(word) {
 };
 
 let scrabbleScorer = function(word) {
-   let letterValue = "";
    let scrabbleScore = 0;
+   word = word.toLowerCase();
    for (let i = 0; i < word.length; i++) {
-      for (let i in newPointStructure) {
-         transform()
-         i = letterValue
-      i += scrabbleScore
-      }
+      let letter = word[i];
+      scrabbleScore += newPointStructure[letter];
    }
    return scrabbleScore;
 };
