@@ -37,7 +37,7 @@ function initialPrompt() {
    console.log("Let's play some scrabble! Enter 'QUIT' when you're done");
    while (true) {
    let enteredWord = input.question("Enter a word: ");
-   if (phrase.toUpperCase() === "QUIT") {
+   if (enteredWord.toUpperCase() === "QUIT") {
       console.log("\nThanks for playing! Goodbye. \n");
       break;
    } else {
