@@ -39,9 +39,9 @@ function initialPrompt() {
       let enteredWord = input.question("Enter a word: ");
       if (enteredWord.toUpperCase() === "QUIT") {
          console.log("\nThanks for playing! Goodbye. \n");
-      break;
+         break;
       } else {
-      scorerPrompt();
+        return enteredWord;  
       }
    }
 };
@@ -76,10 +76,10 @@ let vowelBonusScorer = function(word) {
    let vowels = ["A", "E", "I", "O", "U"];
    for (let i = 0; i < word.length; i++) {
       if (vowels.indexOf(word[i]) !== -1) {
-      vowelBonusScore += 3;
-   } else {
-      vowelBonusScore += 1;
-   }
+         vowelBonusScore += 3;
+      } else {
+         vowelBonusScore += 1;
+      }
    }
    return vowelBonusScore;
 };
@@ -117,7 +117,7 @@ function scorerPrompt() {
       console.log(i + "—" + scoringAlgorithms[i].name + ": " + scoringAlgorithms[i].description);
    }
    let pickedAlgorithm = input.question("Enter 0, 1, or 2: ");
-   return pickedAlgorithm;
+   return Number(pickedAlgorithm);
 };
 
 function runProgram() {
@@ -125,7 +125,8 @@ function runProgram() {
    let pickedAlgorithm = scorerPrompt();
    let score = scoringAlgorithms[pickedAlgorithm].scorerFunction(word);
    console.log(`Score for '${word}': ${score}`);
-}
+};
+runProgram();
 
 
 // Don't write any code below this line //
