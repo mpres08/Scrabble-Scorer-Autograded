@@ -114,11 +114,12 @@ function scorerPrompt() {
 };
 
 function runProgram() {
-   while (true) {
+   let game = true;
+   while (game == true) {
       let word = initialPrompt();
       if (word.toUpperCase() == "QUIT") {
          console.log("\nThanks for playing! Goodbye. \n");
-         break;
+         game = false;
       } else {
          let pickedAlgorithm = scorerPrompt();
          let score = scoringAlgorithms[pickedAlgorithm].scorerFunction(word);
@@ -126,7 +127,6 @@ function runProgram() {
       }
    }
 };
-runProgram();
 
 
 // Don't write any code below this line //
