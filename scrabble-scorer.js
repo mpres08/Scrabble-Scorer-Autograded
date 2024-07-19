@@ -35,15 +35,12 @@ function oldScrabbleScorer(word) {
 
 function initialPrompt() {
    console.log("Let's play some scrabble! Enter 'QUIT' when you're done");
-   while (true) {
-      let enteredWord = input.question("Enter a word: ");
-      if (enteredWord.toUpperCase() === "QUIT") {
-         console.log("\nThanks for playing! Goodbye. \n");
-         break;
-      } else {
-        return enteredWord;  
-      }
-   }
+   let enteredWord = input.question("Enter a word: ");
+   if (word.toUpperCase() === "QUIT") {
+      console.log("\nThanks for playing! Goodbye. \n")
+   } else {
+      return enteredWord;
+   }    
 };
 
 function transform(oldObject) {
@@ -121,10 +118,12 @@ function scorerPrompt() {
 };
 
 function runProgram() {
-   let word = initialPrompt();
-   let pickedAlgorithm = scorerPrompt();
-   let score = scoringAlgorithms[pickedAlgorithm].scorerFunction(word);
-   console.log(`Score for '${word}': ${score}`);
+   while (true) {
+      let word = initialPrompt();
+      let pickedAlgorithm = scorerPrompt();
+      let score = scoringAlgorithms[pickedAlgorithm].scorerFunction(word);
+      console.log(`Score for '${word}': ${score}`);
+   }
 };
 runProgram();
 
